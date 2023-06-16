@@ -6,11 +6,48 @@
 /*   By: aoudija <aoudija@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 11:05:28 by aoudija           #+#    #+#             */
-/*   Updated: 2023/06/15 16:02:13 by aoudija          ###   ########.fr       */
+/*   Updated: 2023/06/16 14:13:36 by aoudija          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cube.h"
+
+void	player_pos()
+{
+	int	i;
+	int	j;
+
+	i = -1;
+	while (g_parser->map[++i])
+	{
+		j = -1;
+		while (g_parser->map[i][++j])
+		{
+			if (g_parser->map[i][j] == 'N' || g_parser->map[i][j] == 'S'
+				|| g_parser->map[i][j] == 'E' || g_parser->map[i][j] == 'W')
+				g_parser->pos = g_parser->map[i][j];
+		}
+	}
+}
+
+int	lines_number(char *str)
+{
+	char	*s;
+	int		fd;
+	int		i;
+
+	i = 0;
+	fd = open(str, O_RDWR);
+	s = get_next_line(fd);
+	while (s)
+	{
+		++i;
+		free(s);
+		s = get_next_line(fd);
+	}
+	close(fd);
+	return (i);
+}
 
 int all_white(char *str)
 {

@@ -6,7 +6,7 @@
 /*   By: aoudija <aoudija@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 14:51:09 by aoudija           #+#    #+#             */
-/*   Updated: 2023/06/15 23:08:22 by aoudija          ###   ########.fr       */
+/*   Updated: 2023/06/16 14:14:34 by aoudija          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,8 @@ typedef struct	s_pars
 	char	*colorc;
 	char	**f;
 	char	**c;
+	char	**map;
+	char	pos;
 }				t_pars;
 t_pars	*g_parser;
 int		parsing(char *str);
@@ -94,5 +96,13 @@ char	*rest_of_line(char *line, char *str);
 char	*get_str(char *str);
 int		check_colors(void);
 int		accessible(void);
+char	**file_tab(char *str);
+char	**fst_part(char **tab);
+int		checker_map1(char *str);
+int		lines_number(char *str);
+int		check_content(void);
+void	printerr(int e);
+void	player_pos();
+
 
 #endif

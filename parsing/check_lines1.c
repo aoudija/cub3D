@@ -1,37 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_lines.c                                      :+:      :+:    :+:   */
+/*   check_lines1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aoudija <aoudija@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 16:32:15 by aoudija           #+#    #+#             */
-/*   Updated: 2023/06/15 15:59:12 by aoudija          ###   ########.fr       */
+/*   Updated: 2023/06/16 09:59:48 by aoudija          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cube.h"
 
-int	lines_number(char *str)
-{
-	char	*s;
-	int		fd;
-	int		i;
-
-	i = 0;
-	fd = open(str, O_RDWR);
-	s = get_next_line(fd);
-	while (s)
-	{
-		++i;
-		free(s);
-		s = get_next_line(fd);
-	}
-	close(fd);
-	return (i);
-}
-
-char	**file_in_tab(char *str)
+char	**file_tab(char *str)
 {
 	int		i;
 	int		fd;
@@ -113,13 +94,12 @@ int	check_lines(char *str)
 	char	**lines;
 	int		i;
 
-	file = file_in_tab(str);
+	file = file_tab(str);
 	lines = fst_part(file);
 	ft_free(file);
 	if (!paths(lines))
-		return (0);
+		return (ft_free(lines), 0);
 	if (!colors(lines))
-		return (0);
-	ft_free(lines);
-	return (1);
+		return (ft_free(lines), 0);
+	return (ft_free(lines), 1);
 }
