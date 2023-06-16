@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelhadj <abelhadj@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: aoudija <aoudija@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 17:18:49 by abelhadj          #+#    #+#             */
-/*   Updated: 2023/06/15 22:49:30 by abelhadj         ###   ########.fr       */
+/*   Updated: 2023/06/16 21:40:21 by aoudija          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../cube.h"
 
 int	key_off(int key)
 {

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   draw_utile.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelhadj <abelhadj@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: aoudija <aoudija@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 20:23:35 by abelhadj          #+#    #+#             */
-/*   Updated: 2023/06/16 14:12:53 by abelhadj         ###   ########.fr       */
+/*   Updated: 2023/06/16 21:40:21 by aoudija          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../cube.h"
 
 
 void	my_mlx_pixel_put2(int x, int y, int color)

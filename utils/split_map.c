@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   split_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelhadj <abelhadj@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: aoudija <aoudija@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 17:12:08 by abelhadj          #+#    #+#             */
-/*   Updated: 2023/06/07 16:51:38 by abelhadj         ###   ########.fr       */
+/*   Updated: 2023/06/16 21:40:21 by aoudija          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../cube.h"
 
 char	**split_map(char *map)
 {

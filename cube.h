@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   cube.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abelhadj <abelhadj@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#ifndef CUBE_H
+# define CUBE_H
 
 # include <limits.h>
 # include <stdio.h>
@@ -199,7 +199,7 @@ void	ft_error(char *msg);
 int		name_check(char *name);
 char	**split_map(char *map);
 void	free_cart(char **p);
-
+char	*get_next_line(int fd);
 /* libft */
 void	*ft_calloc(size_t num, size_t size);
 void	ft_putstr_fd(char *s, int fd);
@@ -216,5 +216,40 @@ char	*ft_itoa(int n);
 char	*ft_strdup(const char *s);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
 void	*ft_memmove(void *dest, const void *src, size_t n);
+
+/*parser*/
+typedef struct	s_pars
+{
+	char	*path_no;
+	char	*path_so;
+	char	*path_we;
+	char	*path_ea;
+	char	*colorf;
+	char	*colorc;
+	char	**f;
+	char	**c;
+	char	**map;
+	char	pos;
+}				t_pars;
+t_pars	*g_parser;
+int		parsing(char *str);
+int		dot_cub(char *arg);
+int 	all_white(char *str);
+int		check_lines(char *str);
+char	*get_line(char **tab, char *str);
+char	*rest_of_line(char *line, char *str);
+char	*get_str(char *str);
+int		check_colors(void);
+int		accessible(void);
+char	**file_tab(char *str);
+char	**fst_part(char **tab);
+int		checker_map1(char *str);
+int		lines_number(char *str);
+int		check_content(void);
+void	printerr(int e);
+void	player_pos();
+int		end(char **file, char *str);
+int		map_len(void);
+int		check_first_last(void);
 
 #endif

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelhadj <abelhadj@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: aoudija <aoudija@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 19:31:10 by abelhadj          #+#    #+#             */
-/*   Updated: 2023/06/15 21:59:37 by abelhadj         ###   ########.fr       */
+/*   Updated: 2023/06/16 21:40:21 by aoudija          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../cube.h"
 
 void	move_down(t_data *data)
 {

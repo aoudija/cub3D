@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ray.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelhadj <abelhadj@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: aoudija <aoudija@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 21:02:12 by abelhadj          #+#    #+#             */
-/*   Updated: 2023/06/15 20:16:11 by abelhadj         ###   ########.fr       */
+/*   Updated: 2023/06/16 21:40:21 by aoudija          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../cube.h"
 
 void	checkdis(int i)
 {

@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tablen.c                                        :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelhadj <abelhadj@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: abelhadj <abelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/13 20:42:12 by abelhadj          #+#    #+#             */
-/*   Updated: 2023/06/13 20:42:22 by abelhadj         ###   ########.fr       */
+/*   Created: 2022/10/05 14:05:05 by abelhadj          #+#    #+#             */
+/*   Updated: 2022/10/30 20:57:50 by abelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include"libft.h"
 
-int	ft_tablen(char **tab)
+int	ft_isprint(int c)
 {
-	int	i;
-
-	i = 0;
-	while (tab[i])
-		i++;
-	return (i);
+	return (c >= 32 && c < 127);
 }
