@@ -6,7 +6,7 @@
 /*   By: aoudija <aoudija@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 16:32:40 by aoudija           #+#    #+#             */
-/*   Updated: 2023/06/16 13:24:29 by aoudija          ###   ########.fr       */
+/*   Updated: 2023/06/16 21:25:35 by aoudija          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ int parsing(char *str)
 		return (printerr(2), 0);
 	if (!check_colors())
 		return (printerr(3), 0);
-	// if (!accessible())
-	// 	return (printerr(4), 0);
+	if (!accessible())
+		return (printerr(4), 0);
 	if (!checker_map1(str))
 		return (printerr(5), 0);
 	return (1);

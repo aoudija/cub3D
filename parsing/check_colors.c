@@ -6,7 +6,7 @@
 /*   By: aoudija <aoudija@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 14:26:33 by aoudija           #+#    #+#             */
-/*   Updated: 2023/06/15 22:42:34 by aoudija          ###   ########.fr       */
+/*   Updated: 2023/06/16 21:11:53 by aoudija          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int check_commas(char *str)
 			c++;
 	}
 	if (c != 2)
-		return (0);
+		return (free(str), 0);
 	return (1);
 }
 
@@ -71,11 +71,16 @@ int check_colors()
 	if (!check_digitcomma(g_parser->colorc)
 		|| !check_digitcomma(g_parser->colorf))
 		return (0);
-	if (!check_commas(g_parser->colorc)
-		|| !check_commas(g_parser->colorf))
-		return (0);
+	if (!check_commas(g_parser->colorc) && check_commas(g_parser->colorf))
+		return (free(g_parser->colorf), 0);
+	if (!check_commas(g_parser->colorf) && check_commas(g_parser->colorc))
+		return (free(g_parser->colorc), 0);
+	if (!check_commas(g_parser->colorf) && !check_commas(g_parser->colorc))
+		return (0);					
 	g_parser->c = ft_split(g_parser->colorc, ',');
 	g_parser->f = ft_split(g_parser->colorf, ',');
+	free(g_parser->colorc);
+	free(g_parser->colorf);
 	if (!check_length(g_parser->f) || !check_length(g_parser->c))
 		return (0);
 	return (1);

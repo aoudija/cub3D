@@ -6,7 +6,7 @@
 /*   By: aoudija <aoudija@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 09:24:53 by aoudija           #+#    #+#             */
-/*   Updated: 2023/06/16 14:18:36 by aoudija          ###   ########.fr       */
+/*   Updated: 2023/06/16 18:08:17 by aoudija          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,9 @@ int	skip_part1(char **tab)
 		else if (tab[i][0] != '\n' && ft_strlen(tab[i]) >= 1)
 			c++;
 	}
+	if (all_white(tab[i]))
+		while (all_white(tab[i]))
+			i++;
 	return (i);
 }
 
@@ -38,11 +41,12 @@ void	put_map(char  **file, char *str)
 	int	j;
 	int n;
 
+	
 	i = skip_part1(file);
 	g_parser->map = malloc(sizeof(char *) * ((lines_number(str) - i ) + 1));
 	j = 0;
 	n = 0;
-	while (file[i])
+	while (file[i] && i <= end(file, str))
 	{
 		g_parser->map[j] = ft_strdup(file[i]);
 		j++;
@@ -57,8 +61,8 @@ int	is_closed(char c)
 	int	i;
 	int	j;
 
-	i = -1;
-	while (g_parser->map[++i])
+	i = 0;
+	while (g_parser->map[++i] && i < map_len())
 	{
 		j = -1;
 		while (g_parser->map[i][++j])
@@ -79,14 +83,29 @@ int	is_closed(char c)
 	return (1);
 }
 
+int	empty_line(void)
+{
+	int	i;
+
+	i = -1;
+	while (g_parser->map[++i])
+	{
+		if (all_white(g_parser->map[i]))
+			return (0);
+	}
+	return (1);
+}
+
 int	checker_map1(char *str)
 {
-	int		i;
-
 	put_map(file_tab(str), str);
+	if (!empty_line())
+		return (0);
 	if (!check_content())
 		return (0);
 	player_pos();
+	if (!check_first_last())
+		return (0);
 	if (!is_closed(g_parser->pos) || !is_closed('0'))
 		return (0);
 	return (1);

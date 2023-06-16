@@ -79,12 +79,12 @@ char	*get_str(char *str)
 		&& str[i] != '\n') && str[i])
 		i++;
 	if (i == j)
-		return (NULL);
+		return (free(str), NULL);
 	path = ft_substr(str, j, i - j);
 	while (str[++i])
 		if (str[i] != ' ' && str[i] != '\t' && str[i] != '\n')
-			return (NULL);
-	return (path);
+			return (free(path), free(str), NULL);
+	return (free(str), path);
 }
 
 char	*rest_of_line(char *line, char *str)
@@ -100,11 +100,12 @@ char	*rest_of_line(char *line, char *str)
 		i++;
 	d = fst_partof_line(line + i);
 	if (!d)
-		return (NULL);
+		return (free(line), NULL);
 	if (ft_strcmp(d, str))
-		return (NULL);
+		return (free(d), free(line), NULL);
 	rest = ft_substr(line, i + ft_strlen(d),
 		ft_strlen(line) - i + ft_strlen(d));
+	free(d);
 	free(line);
 	return (rest);
 }

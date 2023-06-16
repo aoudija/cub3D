@@ -6,7 +6,7 @@
 /*   By: aoudija <aoudija@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 11:05:28 by aoudija           #+#    #+#             */
-/*   Updated: 2023/06/16 14:13:36 by aoudija          ###   ########.fr       */
+/*   Updated: 2023/06/16 17:58:21 by aoudija          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,17 @@ void	player_pos()
 	}
 }
 
+int	end(char **file, char *str)
+{
+	int	e;
+
+	e = lines_number(str);
+	e--;
+	while (all_white(file[e]))
+		e--;
+	return (e);
+}
+
 int	lines_number(char *str)
 {
 	char	*s;
@@ -45,6 +56,7 @@ int	lines_number(char *str)
 		free(s);
 		s = get_next_line(fd);
 	}
+	free(s);
 	close(fd);
 	return (i);
 }
@@ -53,7 +65,7 @@ int all_white(char *str)
 {
 	int	i;
 
-	i = 0;
+	i = -1;
 	while (str[++i])
 	{
 		if (str[i] != ' ' && str[i] != '\t' && str[i] != '\n')

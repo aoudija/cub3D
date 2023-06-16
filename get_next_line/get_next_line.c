@@ -6,7 +6,7 @@
 /*   By: aoudija <aoudija@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 13:32:26 by aoudija           #+#    #+#             */
-/*   Updated: 2023/06/14 10:42:31 by aoudija          ###   ########.fr       */
+/*   Updated: 2023/06/16 20:17:07 by aoudija          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,6 @@ char	*get_next_line(int fd)
 	read = ft_read(fd, buffer, line);
 	free(buffer);
 	line = ft_line(read);
+	free(read);
 	return (line);
 }

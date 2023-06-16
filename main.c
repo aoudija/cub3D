@@ -1,27 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free.c                                          :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aoudija <aoudija@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/21 09:10:19 by aoudija           #+#    #+#             */
-/*   Updated: 2023/06/16 19:28:35 by aoudija          ###   ########.fr       */
+/*   Created: 2023/06/02 14:43:53 by aoudija           #+#    #+#             */
+/*   Updated: 2023/06/16 21:45:08 by aoudija          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "cube.h"
 
-void	*ft_free(char **table)
+void	free_parser(void)
 {
-	int	i;
+	free(g_parser->path_ea);
+	free(g_parser->path_so);
+	free(g_parser->path_no);
+	free(g_parser->path_we);
+	ft_free(g_parser->f);
+	ft_free(g_parser->c);
+	ft_free(g_parser->map);
+	free(g_parser);
+}
 
-	i = 0;
-	while (table[i])
+int	main(int ac, char **av)
+{
+	if (ac == 2)
 	{
-		free(table[i]);
-		i++;
+		g_parser = malloc(sizeof(t_pars));
+		if (!parsing(av[1]))
+			return (0);
+		free_parser();
 	}
-	free(table);
-	return (NULL);
 }
