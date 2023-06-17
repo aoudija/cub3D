@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aoudija <aoudija@student.42.fr>            +#+  +:+       +#+        */
+/*   By: abelhadj <abelhadj@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 20:56:04 by abelhadj          #+#    #+#             */
-/*   Updated: 2023/06/16 21:40:21 by aoudija          ###   ########.fr       */
+/*   Updated: 2023/06/15 21:42:07 by abelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cube.h"
+#include "../include/cub3d.h"
 
 void	fillcube(int i, int j)
 {

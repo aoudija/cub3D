@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   keys.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aoudija <aoudija@student.42.fr>            +#+  +:+       +#+        */
+/*   By: abelhadj <abelhadj@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 19:28:37 by abelhadj          #+#    #+#             */
-/*   Updated: 2023/06/16 21:40:21 by aoudija          ###   ########.fr       */
+/*   Updated: 2023/06/17 00:45:23 by abelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cube.h"
+#include "../include/cub3d.h"
 
 int	keys(int key, t_data *data)
 {
 	if (key == 123)
-		turn_right(data, 0);
+		turn_right(0);
 	if (key == 124)
-		turn_left(data, 0);
+		turn_left(0);
 	if (key == 1 || key == 125)
 		move_down(data);
 	if (key == 13 || key == 126)
@@ -32,9 +32,8 @@ int	keys(int key, t_data *data)
 	return (0);
 }
 
-int	mouse(int x, int y)
+int	mouse(int x)
 {
-	printf("** %d .. %d\n", g_data.xmouse , x);
 	if (x > 0 && x < 2 * WIN_W / 5)
 		g_data.player.dirturn = -1;
 	else if (x < WIN_W && x > WIN_W - (2 * WIN_W / 5))

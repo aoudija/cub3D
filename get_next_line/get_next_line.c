@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aoudija <aoudija@student.42.fr>            +#+  +:+       +#+        */
+/*   By: abelhadj <abelhadj@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 13:32:26 by aoudija           #+#    #+#             */
-/*   Updated: 2023/06/16 20:17:07 by aoudija          ###   ########.fr       */
+/*   Updated: 2023/06/16 23:50:22 by abelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cube.h"
+#include "../include/cub3d.h"
 
 char	*ft_read(int fd, char *buffer, char *t)
 {

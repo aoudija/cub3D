@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   name_check.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aoudija <aoudija@student.42.fr>            +#+  +:+       +#+        */
+/*   By: abelhadj <abelhadj@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 17:49:58 by abelhadj          #+#    #+#             */
-/*   Updated: 2023/06/16 21:40:21 by aoudija          ###   ########.fr       */
+/*   Updated: 2023/06/13 22:24:06 by abelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cube.h"
+#include "../include/cub3d.h"
 
 int	name_check(char *name)
 {

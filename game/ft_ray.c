@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ray.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aoudija <aoudija@student.42.fr>            +#+  +:+       +#+        */
+/*   By: abelhadj <abelhadj@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 20:15:55 by abelhadj          #+#    #+#             */
-/*   Updated: 2023/06/16 21:40:21 by aoudija          ###   ########.fr       */
+/*   Updated: 2023/06/15 20:17:45 by abelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cube.h"
+#include "../include/cub3d.h"
 
 double	distance(double x, double y)
 {

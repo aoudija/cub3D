@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   free_cart.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aoudija <aoudija@student.42.fr>            +#+  +:+       +#+        */
+/*   By: abelhadj <abelhadj@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 19:07:49 by abelhadj          #+#    #+#             */
-/*   Updated: 2023/06/16 21:40:21 by aoudija          ###   ########.fr       */
+/*   Updated: 2023/06/07 16:51:38 by abelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cube.h"
+#include "../include/cub3d.h"
 
 void	free_cart(char **cart)
 {
