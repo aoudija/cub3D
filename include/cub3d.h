@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cube.h                                            :+:      :+:    :+:   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abelhadj <abelhadj@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 20:47:12 by abelhadj          #+#    #+#             */
-/*   Updated: 2023/06/16 01:07:47 by abelhadj         ###   ########.fr       */
+/*   Updated: 2023/06/17 01:04:47 by abelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUBE_H
-# define CUBE_H
+#ifndef CUB3D_H
+# define CUB3D_H
 
 # include <limits.h>
 # include <stdio.h>
@@ -23,13 +23,16 @@
 # include <mlx.h>
 # include <math.h>
 # include "mlx.h"
+# include "../libft/libft.h"
 
-# define CUBE 20
-# define WIN_W 1920
-# define WIN_H 1080
+# define CUBE 10
+# define WIN_W 1020
+# define WIN_H 800
+# define BAR_W 1020
+# define BAR_H 200
 # define SPEED_R 5
-# define M_SPEED_R 5
-# define SPEED_M 5
+# define M_SPEED_R 1
+# define SPEED_M 2
 
 typedef struct s_pos
 {
@@ -48,6 +51,22 @@ typedef struct s_g3d
 	int		x;
 	int		y;
 }			t_g3d;
+
+typedef struct s_pars
+{
+	char	*path_no;
+	char	*path_so;
+	char	*path_we;
+	char	*path_ea;
+	char	*colorf;
+	char	*colorc;
+	char	**f;
+	char	**c;
+	char	**map;
+	char	pos;
+	int		x;
+	int		y;
+}				t_pars;
 
 typedef struct s_ray
 {
@@ -107,10 +126,26 @@ typedef struct s_texture
 	int				endian;
 }		t_texture;
 
+typedef struct s_img
+{
+	void			*img;
+	int				img_w;
+	char			*addr;
+	int				img_h;
+	int				bits_per_pixel;
+	int				line_length;
+	int				endian;
+}			t_img;
+
+typedef struct s_sprite
+{
+	void	*img;
+	char	*path;
+}		t_sprite;
+
 typedef struct s_data
 {
 	t_player	player;
-	void		*img;
 	char		*addr;
 	char		**cart;
 	char		*map;
@@ -118,8 +153,6 @@ typedef struct s_data
 	char		*mlx_win;
 	int			x_width;
 	int			y_height;
-	int			bits_per_pixel;
-	int			line_length;
 	int			endian;
 	int			dgame;
 	double		viewangle;
@@ -127,18 +160,23 @@ typedef struct s_data
 	double		*rays;
 	double		rad;
 	int			xmouse;
-	void		*img2;
-	char		*addr2;
-	int			bits_per_pixel2;
-	int			line_length2;
-	int			endian2;
 	t_g3d		*g3d;
 	t_ray		*ray;
 	t_texture	no;
 	t_texture	so;
 	t_texture	ea;
 	t_texture	we;
+	t_img		img;
+	t_img		img2;
+	t_img		img3;
+	t_img		img4;
+	t_sprite	*gun;
+	t_sprite	*nbr;
 	int			flag;
+	int			shotf;
+	int			frame1;
+	void		*gunp;
+	t_pars		pars;
 }			t_data;
 t_data		g_data;
 
@@ -148,12 +186,13 @@ int		is_wall(double x, double y);
 int		isdown(double angle);
 int		isright(double angle);
 void	vapsangle(double *angle);
-void	turn_left(t_data *data, int flag);
-void	turn_right(t_data *data, int flag);
+void	turn_left(int flag);
+void	turn_right(int flag);
 
 /* draw */
 void	my_mlx_pixel_put(int x, int y, int color);
 void	my_mlx_pixel_put2(int x, int y, int color);
+void	my_mlx_pixel_put3(int x, int y, int color);
 void	drawcircle(int xc, int yc, int radius);
 void	line(double dis, double ang, int color);
 void	fillmap(void);
@@ -179,7 +218,7 @@ void	move_down(t_data *data);
 void	move_top(t_data *data);
 void	addimg(void);
 int		keys(int key, t_data *data);
-int		mouse(int x, int y);
+int		mouse(int x);
 
 /* 3D*/
 void	g3d(void);
@@ -199,15 +238,13 @@ void	ft_error(char *msg);
 int		name_check(char *name);
 char	**split_map(char *map);
 void	free_cart(char **p);
-char	*get_next_line(int fd);
+
 /* libft */
 void	*ft_calloc(size_t num, size_t size);
 void	ft_putstr_fd(char *s, int fd);
 char	**ft_split(char const *s, char c);
-char	*ft_strchr(char *s, int c);
 int		ft_strcmp(char *s1, char *s2);
 char	*ft_strjoin_gnl(char *s1, char *s2);
-char	*ft_strjoin(char const *s1, char const *s2);
 size_t	ft_strlen(const char *s);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*get_next_line(int fd);
@@ -218,23 +255,9 @@ void	*ft_memcpy(void *dest, const void *src, size_t n);
 void	*ft_memmove(void *dest, const void *src, size_t n);
 
 /*parser*/
-typedef struct	s_pars
-{
-	char	*path_no;
-	char	*path_so;
-	char	*path_we;
-	char	*path_ea;
-	char	*colorf;
-	char	*colorc;
-	char	**f;
-	char	**c;
-	char	**map;
-	char	pos;
-}				t_pars;
-t_pars	*g_parser;
 int		parsing(char *str);
 int		dot_cub(char *arg);
-int 	all_white(char *str);
+int		all_white(char *str);
 int		check_lines(char *str);
 char	*get_line(char **tab, char *str);
 char	*rest_of_line(char *line, char *str);
@@ -247,7 +270,7 @@ int		checker_map1(char *str);
 int		lines_number(char *str);
 int		check_content(void);
 void	printerr(int e);
-void	player_pos();
+void	player_pos(void);
 int		end(char **file, char *str);
 int		map_len(void);
 int		check_first_last(void);

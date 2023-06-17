@@ -3,28 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   draw_utile.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aoudija <aoudija@student.42.fr>            +#+  +:+       +#+        */
+/*   By: abelhadj <abelhadj@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 20:23:35 by abelhadj          #+#    #+#             */
-/*   Updated: 2023/06/16 21:40:21 by aoudija          ###   ########.fr       */
+/*   Updated: 2023/06/16 17:19:25 by abelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cube.h"
-
-
-void	my_mlx_pixel_put2(int x, int y, int color)
-{
-	char	*dst;
-	int		ofsset;
-
-	if ((x >= 0 && x < WIN_W) && (y >= 0 && y < WIN_H))
-	{
-		ofsset = y * g_data.line_length2 + x * (g_data.bits_per_pixel2 / 8);
-		dst = g_data.addr2 + ofsset;
-		*(unsigned int *)dst = color;
-	}
-}
+#include "../include/cub3d.h"
 
 void	my_mlx_pixel_put(int x, int y, int color)
 {
@@ -32,23 +18,35 @@ void	my_mlx_pixel_put(int x, int y, int color)
 
 	if ((x >= 0 && x < g_data.x_width) && (y >= 0 && y < g_data.y_height))
 	{
-		dst = g_data.addr + ((y * g_data.line_length) + \
-		(x * (g_data.bits_per_pixel / 8)));
+		dst = g_data.img.addr + ((y * g_data.img.line_length) + \
+		(x * (g_data.img.bits_per_pixel / 8)));
 		*(unsigned int *)dst = color;
 	}
 }
 
-// void	my_mlx_pixel_put2(int x, int y, int color)
-// {
-// 	char	*dst2;
+void	my_mlx_pixel_put2(int x, int y, int color)
+{
+	char	*dst2;
 
-// 	if ((x >= 0 && x < WIN_W) && (y >= 0 && y < WIN_H))
-// 	{
-// 		dst2 = g_data.addr2 + ((y * g_data.line_length2) + \
-// 		(x * (g_data.bits_per_pixel2 / 8)));
-// 		*(unsigned int *)dst2 = color;
-// 	}
-// }
+	if ((x >= 0 && x < WIN_W) && (y >= 0 && y < WIN_H))
+	{
+		dst2 = g_data.img2.addr + ((y * g_data.img2.line_length) + \
+		(x * (g_data.img2.bits_per_pixel / 8)));
+		*(unsigned int *)dst2 = color;
+	}
+}
+
+void	my_mlx_pixel_put3(int x, int y, int color)
+{
+	char	*dst3;
+
+	if ((x >= 0 && x < WIN_W) && (y >= 0 && y < WIN_H))
+	{
+		dst3 = g_data.img3.addr + ((y * g_data.img3.line_length) + \
+		(x * (g_data.img3.bits_per_pixel / 8)));
+		*(unsigned int *)dst3 = color;
+	}
+}
 
 int	rgb(int r, int g, int b)
 {

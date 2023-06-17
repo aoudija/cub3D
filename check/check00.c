@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   check00.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aoudija <aoudija@student.42.fr>            +#+  +:+       +#+        */
+/*   By: abelhadj <abelhadj@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 17:18:23 by abelhadj          #+#    #+#             */
-/*   Updated: 2023/06/16 21:40:21 by aoudija          ###   ########.fr       */
+/*   Updated: 2023/06/17 00:39:56 by abelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cube.h"
+#include "../include/cub3d.h"
 
 // int	check_wall(double x, double y)
 // {
@@ -83,7 +83,8 @@ int	check_wall(double x, double y)
 
 int	is_wall(double x, double y)
 {
-	if (g_data.cart[(int)(y) / CUBE][(int)(x) / CUBE] == '1')
+	if (g_data.cart[(int)(y) / CUBE][(int)(x) / CUBE] == '1'
+		|| g_data.cart[(int)(y) / CUBE][(int)(x) / CUBE] == ' ')
 		return (1);
 	return (0);
 }

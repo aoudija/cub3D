@@ -1,19 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_error.c                                         :+:      :+:    :+:   */
+/*   ft_tablen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abelhadj <abelhadj@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/14 18:17:56 by abelhadj          #+#    #+#             */
-/*   Updated: 2023/06/07 16:51:38 by abelhadj         ###   ########.fr       */
+/*   Created: 2023/06/13 20:42:12 by abelhadj          #+#    #+#             */
+/*   Updated: 2023/06/16 23:50:24 by abelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-void	ft_error(char	*msg)
+int	ft_tablen(char **tab)
 {
-	ft_putstr_fd(msg, 2);
-	exit(1);
+	int	i;
+
+	i = 0;
+	while (tab[i])
+		i++;
+	return (i);
 }

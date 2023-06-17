@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   check_colors.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aoudija <aoudija@student.42.fr>            +#+  +:+       +#+        */
+/*   By: abelhadj <abelhadj@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 14:26:33 by aoudija           #+#    #+#             */
-/*   Updated: 2023/06/16 21:11:53 by aoudija          ###   ########.fr       */
+/*   Updated: 2023/06/16 23:59:53 by abelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cube.h"
+#include "../include/cub3d.h"
 
-int check_digitcomma(char *str)
+int	check_digitcomma(char *str)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (str[++i])
@@ -25,10 +25,10 @@ int check_digitcomma(char *str)
 	return (1);
 }
 
-int check_commas(char *str)
+int	check_commas(char *str)
 {
-	int i;
-	int c;
+	int	i;
+	int	c;
 
 	c = 0;
 	i = -1;
@@ -61,27 +61,27 @@ int	check_length(char **str)
 	return (1);
 }
 
-int check_colors()
+int	check_colors(void)
 {
-	int i;
+	int	i;
 
 	i = -1;
-	if (!g_parser->colorc || !g_parser->colorf)
+	if (!g_data.pars.colorc || !g_data.pars.colorf)
 		return (0);
-	if (!check_digitcomma(g_parser->colorc)
-		|| !check_digitcomma(g_parser->colorf))
+	if (!check_digitcomma(g_data.pars.colorc)
+		|| !check_digitcomma(g_data.pars.colorf))
 		return (0);
-	if (!check_commas(g_parser->colorc) && check_commas(g_parser->colorf))
-		return (free(g_parser->colorf), 0);
-	if (!check_commas(g_parser->colorf) && check_commas(g_parser->colorc))
-		return (free(g_parser->colorc), 0);
-	if (!check_commas(g_parser->colorf) && !check_commas(g_parser->colorc))
-		return (0);					
-	g_parser->c = ft_split(g_parser->colorc, ',');
-	g_parser->f = ft_split(g_parser->colorf, ',');
-	free(g_parser->colorc);
-	free(g_parser->colorf);
-	if (!check_length(g_parser->f) || !check_length(g_parser->c))
+	if (!check_commas(g_data.pars.colorc) && check_commas(g_data.pars.colorf))
+		return (free(g_data.pars.colorf), 0);
+	if (!check_commas(g_data.pars.colorf) && check_commas(g_data.pars.colorc))
+		return (free(g_data.pars.colorc), 0);
+	if (!check_commas(g_data.pars.colorf) && !check_commas(g_data.pars.colorc))
+		return (0);
+	g_data.pars.c = ft_split(g_data.pars.colorc, ',');
+	g_data.pars.f = ft_split(g_data.pars.colorf, ',');
+	free(g_data.pars.colorc);
+	free(g_data.pars.colorf);
+	if (!check_length(g_data.pars.f) || !check_length(g_data.pars.c))
 		return (0);
 	return (1);
 }

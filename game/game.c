@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aoudija <aoudija@student.42.fr>            +#+  +:+       +#+        */
+/*   By: abelhadj <abelhadj@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 17:18:49 by abelhadj          #+#    #+#             */
-/*   Updated: 2023/06/16 21:40:21 by aoudija          ###   ########.fr       */
+/*   Updated: 2023/06/16 20:07:27 by abelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cube.h"
+#include "../include/cub3d.h"
 
 int	key_off(int key)
 {
@@ -45,6 +45,8 @@ int	key_on(int key)
 		g_data.player.dirwalkx = -1;
 	if (key == 53)
 		quit(&g_data);
+	if (key == 49)
+		g_data.shotf = 1;
 	return (0);
 }
 
@@ -55,8 +57,6 @@ void	game(void)
 	mlx_hook(g_data.mlx_win, 3, 1L << 1, key_off, NULL);
 	mlx_hook(g_data.mlx_win, 17, 0, quit, &g_data);
 	mlx_hook(g_data.mlx_win, 6, 0, mouse, NULL);
-	mlx_put_image_to_window(g_data.mlx, g_data.mlx_win, g_data.img2, 0, 0);
-	// mlx_put_image_to_window(g_data.mlx, g_data.mlx_win, g_data.img, 0, WIN_H - (ft_tablen(g_data.cart) * CUBE));
 	mlx_loop_hook(g_data.mlx, update, NULL);
 	mlx_loop(g_data.mlx);
 }
