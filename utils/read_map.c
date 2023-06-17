@@ -1,36 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   accessible.c                                       :+:      :+:    :+:   */
+/*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abelhadj <abelhadj@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/15 23:03:32 by aoudija           #+#    #+#             */
-/*   Updated: 2023/06/16 23:50:39 by abelhadj         ###   ########.fr       */
+/*   Created: 2023/02/15 16:14:54 by abelhadj          #+#    #+#             */
+/*   Updated: 2023/06/07 16:51:38 by abelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-int	accessible(void)
+char	*read_map(int fd)
 {
-	int	fd;
+	char	*buff;
+	char	*map;
+	char	*tmp;
 
-	fd = open(g_data.pars.path_ea, O_RDONLY);
-	if (fd < 0)
-		return (0);
-	close(fd);
-	fd = open(g_data.pars.path_no, O_RDONLY);
-	if (fd < 0)
-		return (0);
-	close(fd);
-	fd = open(g_data.pars.path_so, O_RDONLY);
-	if (fd < 0)
-		return (0);
-	close(fd);
-	fd = open(g_data.pars.path_we, O_RDONLY);
-	if (fd < 0)
-		return (0);
-	close(fd);
-	return (1);
+	map = ft_calloc(1, 1);
+	while (1)
+	{
+		buff = get_next_line(fd);
+		if (!buff)
+			break ;
+		if (ft_strlen(buff) <= 1)
+			ft_error("ERROR!\nEmpty line in map.\n");
+		tmp = ft_strdup(map);
+		free(map);
+		map = ft_strjoin(tmp, buff);
+		free(tmp);
+		free(buff);
+	}
+	return (map);
 }

@@ -6,11 +6,11 @@
 /*   By: aoudija <aoudija@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 16:32:15 by aoudija           #+#    #+#             */
-/*   Updated: 2023/06/16 21:21:39 by aoudija          ###   ########.fr       */
+/*   Updated: 2023/06/17 21:02:04 by aoudija          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cube.h"
+#include "../include/cub3d.h"
 
 char	**file_tab(char *str)
 {
@@ -49,13 +49,15 @@ char	**fst_part(char **tab)
 	c = 0;
 	while (tab[++i] && c < 6)
 	{
-		if ((tab[i][0] == ' ' || tab[i][0] == '\t') && !all_white(tab[i]))
-			(fst_part[++j] = ft_strdup(tab[i]), c++);
-		else if ((tab[i][0] == ' ' || tab[i][0] == '\t') && all_white(tab[i]))
+		if (((tab[i][0] == ' ' || tab[i][0] == '\t') && !all_white(tab[i]))
+			|| (tab[i][0] != '\n' && ft_strlen(tab[i]) >= 1))
+		{
+			fst_part[++j] = ft_strdup(tab[i]);
+			c++;
+		}
+		else
 		{
 		}
-		else if (tab[i][0] != '\n' && ft_strlen(tab[i]) >= 1)
-			(fst_part[++j] = ft_strdup(tab[i]), c++);
 	}
 	fst_part[++j] = 0;
 	return (fst_part);
@@ -63,29 +65,29 @@ char	**fst_part(char **tab)
 
 int	paths(char **lines)
 {
-	char *t;
+	char	*t;
 
 	t = rest_of_line(get_line(lines, "NO"), "NO");
 	if (!t)
 		return (0);
 	free(t);
-	g_parser->path_no = get_str(rest_of_line(get_line(lines, "NO"), "NO"));
+	g_data.pars.path_no = get_str(rest_of_line(get_line(lines, "NO"), "NO"));
 	t = rest_of_line(get_line(lines, "SO"), "SO");
 	if (!t)
-		return (free(g_parser->path_no), 0);
+		return (free(g_data.pars.path_no), 0);
 	free(t);
-	g_parser->path_so = get_str(rest_of_line(get_line(lines, "SO"), "SO"));
+	g_data.pars.path_so = get_str(rest_of_line(get_line(lines, "SO"), "SO"));
 	t = rest_of_line(get_line(lines, "WE"), "WE");
 	if (!t)
-		return (free(g_parser->path_no), free(g_parser->path_so), 0);
+		return (free(g_data.pars.path_no), free(g_data.pars.path_so), 0);
 	free(t);
-	g_parser->path_we = get_str(rest_of_line(get_line(lines, "WE"), "WE"));
+	g_data.pars.path_we = get_str(rest_of_line(get_line(lines, "WE"), "WE"));
 	t = rest_of_line(get_line(lines, "EA"), "EA");
 	if (!t)
-		return (free(g_parser->path_no), free(g_parser->path_so),
-			free(g_parser->path_we), 0);
+		return (free(g_data.pars.path_no), free(g_data.pars.path_so),
+			free(g_data.pars.path_we), 0);
 	free(t);
-	g_parser->path_ea = get_str(rest_of_line(get_line(lines, "EA"), "EA"));
+	g_data.pars.path_ea = get_str(rest_of_line(get_line(lines, "EA"), "EA"));
 	return (1);
 }
 
@@ -97,12 +99,12 @@ int	colors(char **lines)
 	if (!t)
 		return (0);
 	free(t);
-	g_parser->colorf = get_str(rest_of_line(get_line(lines, "F"), "F"));
+	g_data.pars.colorf = get_str(rest_of_line(get_line(lines, "F"), "F"));
 	t = rest_of_line(get_line(lines, "C"), "C");
 	if (!t)
-		return (free(g_parser->colorf), 0);
+		return (free(g_data.pars.colorf), 0);
 	free(t);
-	g_parser->colorc = get_str(rest_of_line(get_line(lines, "C"), "C"));
+	g_data.pars.colorc = get_str(rest_of_line(get_line(lines, "C"), "C"));
 	return (1);
 }
 
@@ -116,12 +118,12 @@ int	check_lines(char *str)
 	ft_free(file);
 	if (!paths(lines))
 		return (ft_free(lines), 0);
-	if (!g_parser->path_ea || !g_parser->path_we
-		|| !g_parser->path_so || !g_parser->path_no)
+	if (!g_data.pars.path_ea || !g_data.pars.path_we
+		|| !g_data.pars.path_so || !g_data.pars.path_no)
 		return (ft_free(lines), 0);
 	if (!colors(lines))
-		return (ft_free(lines), free(g_parser->path_no),
-			free(g_parser->path_so), free(g_parser->path_we),
-			free(g_parser->path_ea), 0);
+		return (ft_free(lines), free(g_data.pars.path_no),
+			free(g_data.pars.path_so), free(g_data.pars.path_we),
+			free(g_data.pars.path_ea), 0);
 	return (ft_free(lines), 1);
 }

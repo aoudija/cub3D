@@ -1,36 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   accessible.c                                       :+:      :+:    :+:   */
+/*   position.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abelhadj <abelhadj@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/15 23:03:32 by aoudija           #+#    #+#             */
-/*   Updated: 2023/06/16 23:50:39 by abelhadj         ###   ########.fr       */
+/*   Created: 2023/02/15 19:05:51 by abelhadj          #+#    #+#             */
+/*   Updated: 2023/06/17 01:20:54 by abelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-int	accessible(void)
+void	position(void)
 {
-	int	fd;
+	int		i;
+	int		j;
 
-	fd = open(g_data.pars.path_ea, O_RDONLY);
-	if (fd < 0)
-		return (0);
-	close(fd);
-	fd = open(g_data.pars.path_no, O_RDONLY);
-	if (fd < 0)
-		return (0);
-	close(fd);
-	fd = open(g_data.pars.path_so, O_RDONLY);
-	if (fd < 0)
-		return (0);
-	close(fd);
-	fd = open(g_data.pars.path_we, O_RDONLY);
-	if (fd < 0)
-		return (0);
-	close(fd);
-	return (1);
+	i = 0;
+	while (g_data.cart[i])
+	{
+		j = 0;
+		while (g_data.cart[i][j])
+		{
+			if (g_data.cart[i][j] == 'N' || g_data.cart[i][j] == 'S'
+				|| g_data.cart[i][j] == 'E' || g_data.cart[i][j] == 'W')
+			{
+				g_data.player.x = j * CUBE + CUBE / 2;
+				g_data.player.y = i * CUBE + CUBE / 2;
+			}
+			j++;
+		}
+		i++;
+	}
 }

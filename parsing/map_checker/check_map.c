@@ -6,11 +6,11 @@
 /*   By: aoudija <aoudija@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 09:24:53 by aoudija           #+#    #+#             */
-/*   Updated: 2023/06/16 18:08:17 by aoudija          ###   ########.fr       */
+/*   Updated: 2023/06/17 21:06:11 by aoudija          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../cube.h"
+#include "../../include/cub3d.h"
 
 int	skip_part1(char **tab)
 {
@@ -35,24 +35,23 @@ int	skip_part1(char **tab)
 	return (i);
 }
 
-void	put_map(char  **file, char *str)
+void	put_map(char **file, char *str)
 {
 	int	i;
 	int	j;
-	int n;
+	int	n;
 
-	
 	i = skip_part1(file);
-	g_parser->map = malloc(sizeof(char *) * ((lines_number(str) - i ) + 1));
+	g_data.pars.map = malloc(sizeof(char *) * ((lines_number(str) - i) + 1));
 	j = 0;
 	n = 0;
 	while (file[i] && i <= end(file, str))
 	{
-		g_parser->map[j] = ft_strdup(file[i]);
+		g_data.pars.map[j] = ft_strdup(file[i]);
 		j++;
 		i++;
 	}
-	g_parser->map[j] = NULL;
+	g_data.pars.map[j] = NULL;
 	ft_free(file);
 }
 
@@ -62,20 +61,21 @@ int	is_closed(char c)
 	int	j;
 
 	i = 0;
-	while (g_parser->map[++i] && i < map_len())
+	while (g_data.pars.map[++i] && i < map_len())
 	{
 		j = -1;
-		while (g_parser->map[i][++j])
+		while (g_data.pars.map[i][++j])
 		{
-			if (g_parser->map[i][j] == c)
+			if (g_data.pars.map[i][j] == c)
 			{
-				if (g_parser->map[i][j - 1] == ' ' || g_parser->map[i][j - 1] == 0)
-					return (0);
-				if (g_parser->map[i][j + 1] == ' ' || g_parser->map[i][j + 1] == 0)
-					return (0);
-				if (g_parser->map[i - 1][j] == ' ' || g_parser->map[i - 1][j] == 0)
-					return (0);
-				if (g_parser->map[i + 1][j] == ' ' || g_parser->map[i + 1][j] == 0)
+				if ((g_data.pars.map[i][j - 1] == ' '
+					|| g_data.pars.map[i][j - 1] == 0)
+					|| (g_data.pars.map[i][j + 1] == ' '
+					|| g_data.pars.map[i][j + 1] == 0)
+					|| (g_data.pars.map[i - 1][j] == ' '
+					|| j + 1 >= (int)ft_strlen(g_data.pars.map[i - 1]))
+					|| (g_data.pars.map[i + 1][j] == ' '
+					|| j + 1 >= (int)ft_strlen(g_data.pars.map[i + 1])))
 					return (0);
 			}
 		}
@@ -88,9 +88,9 @@ int	empty_line(void)
 	int	i;
 
 	i = -1;
-	while (g_parser->map[++i])
+	while (g_data.pars.map[++i])
 	{
-		if (all_white(g_parser->map[i]))
+		if (all_white(g_data.pars.map[i]))
 			return (0);
 	}
 	return (1);
@@ -106,7 +106,7 @@ int	checker_map1(char *str)
 	player_pos();
 	if (!check_first_last())
 		return (0);
-	if (!is_closed(g_parser->pos) || !is_closed('0'))
+	if (!is_closed(g_data.pars.pos) || !is_closed('0'))
 		return (0);
 	return (1);
 }

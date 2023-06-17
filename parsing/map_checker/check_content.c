@@ -6,11 +6,11 @@
 /*   By: aoudija <aoudija@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 11:44:09 by aoudija           #+#    #+#             */
-/*   Updated: 2023/06/16 13:48:59 by aoudija          ###   ########.fr       */
+/*   Updated: 2023/06/17 21:02:57 by aoudija          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../cube.h"
+#include "../../include/cub3d.h"
 
 int	check_existance(char c)
 {
@@ -20,12 +20,12 @@ int	check_existance(char c)
 
 	count = 0;
 	i = -1;
-	while (g_parser->map[++i])
+	while (g_data.pars.map[++i])
 	{
 		j = -1;
-		while (g_parser->map[i][++j])
+		while (g_data.pars.map[i][++j])
 		{
-			if (g_parser->map[i][j] == c)
+			if (g_data.pars.map[i][j] == c)
 				count++;
 		}
 	}
@@ -42,13 +42,13 @@ int	player_num(void)
 
 	i = -1;
 	c = 0;
-	while (g_parser->map[++i])
+	while (g_data.pars.map[++i])
 	{
 		j = -1;
-		while (g_parser->map[i][++j])
+		while (g_data.pars.map[i][++j])
 		{
-			if (g_parser->map[i][j] == 'N' || g_parser->map[i][j] == 'S'
-				|| g_parser->map[i][j] == 'E' || g_parser->map[i][j] == 'W')
+			if (g_data.pars.map[i][j] == 'N' || g_data.pars.map[i][j] == 'S'
+				|| g_data.pars.map[i][j] == 'E' || g_data.pars.map[i][j] == 'W')
 				c++;
 		}
 	}
@@ -63,22 +63,22 @@ int	check_content(void)
 	int	j;
 
 	i = -1;
-	while (g_parser->map[++i])
+	while (g_data.pars.map[++i])
 	{
 		j = -1;
-		while (g_parser->map[i][++j])
+		while (g_data.pars.map[i][++j])
 		{
-			if (g_parser->map[i][j] != '0' && g_parser->map[i][j] != '1'
-				&& g_parser->map[i][j] != '\n' && g_parser->map[i][j] != 'N'
-				&& g_parser->map[i][j] != 'S' && g_parser->map[i][j] != 'E'
-				&& g_parser->map[i][j] != 'W' && g_parser->map[i][j] != ' ')
+			if (g_data.pars.map[i][j] != '0' && g_data.pars.map[i][j] != '1'
+				&& g_data.pars.map[i][j] != '\n' && g_data.pars.map[i][j] != 'N'
+				&& g_data.pars.map[i][j] != 'S' && g_data.pars.map[i][j] != 'E'
+				&& g_data.pars.map[i][j] != 'W' && g_data.pars.map[i][j] != ' ')
 				return (0);
 		}
 	}
 	if (!player_num())
 		return (0);
-	if (!check_existance('0') || !check_existance('1') || !check_existance('\n'))
+	if (!check_existance('0') || !check_existance('1')
+		|| !check_existance('\n'))
 		return (0);
 	return (1);
 }
-

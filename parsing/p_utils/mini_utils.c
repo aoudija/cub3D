@@ -6,26 +6,30 @@
 /*   By: aoudija <aoudija@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 11:05:28 by aoudija           #+#    #+#             */
-/*   Updated: 2023/06/16 17:58:21 by aoudija          ###   ########.fr       */
+/*   Updated: 2023/06/17 15:54:56 by aoudija          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../cube.h"
+#include "../../include/cub3d.h"
 
-void	player_pos()
+void	player_pos(void)
 {
 	int	i;
 	int	j;
 
 	i = -1;
-	while (g_parser->map[++i])
+	while (g_data.pars.map[++i])
 	{
 		j = -1;
-		while (g_parser->map[i][++j])
+		while (g_data.pars.map[i][++j])
 		{
-			if (g_parser->map[i][j] == 'N' || g_parser->map[i][j] == 'S'
-				|| g_parser->map[i][j] == 'E' || g_parser->map[i][j] == 'W')
-				g_parser->pos = g_parser->map[i][j];
+			if (g_data.pars.map[i][j] == 'N' || g_data.pars.map[i][j] == 'S'
+				|| g_data.pars.map[i][j] == 'E' || g_data.pars.map[i][j] == 'W')
+			{
+				g_data.pars.pos = g_data.pars.map[i][j];
+				g_data.pars.x = i;
+				g_data.pars.y = j;
+			}
 		}
 	}
 }
@@ -61,7 +65,7 @@ int	lines_number(char *str)
 	return (i);
 }
 
-int all_white(char *str)
+int	all_white(char *str)
 {
 	int	i;
 
@@ -71,13 +75,13 @@ int all_white(char *str)
 		if (str[i] != ' ' && str[i] != '\t' && str[i] != '\n')
 			return (0);
 	}
-	return(1);
+	return (1);
 }
 
-int dot_cub(char *str)
+int	dot_cub(char *str)
 {
-	if (ft_strcmp(str + (ft_strlen(str) - ft_strlen(".cub"))
-		, ".cub") || open(str, O_RDWR) < 0)
+	if (ft_strcmp(str + (ft_strlen(str) - ft_strlen(".cub")), ".cub")
+		|| open(str, O_RDWR) < 0)
 	{
 		printf("Error\nfile_err\n");
 		return (0);

@@ -6,28 +6,28 @@
 /*   By: aoudija <aoudija@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 16:32:40 by aoudija           #+#    #+#             */
-/*   Updated: 2023/06/16 21:25:35 by aoudija          ###   ########.fr       */
+/*   Updated: 2023/06/17 16:03:15 by aoudija          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cube.h"
+#include "../include/cub3d.h"
 
 void	printerr(int e)
 {
 	printf("Error\n");
 	if (e == 1)
-		printf("check extension");
+		printf("Check extension\n");
 	else if (e == 2)
-		printf("check file");
+		printf("Check file\n");
 	else if (e == 3)
-		printf("check colors");
+		printf("Check colors\n");
 	else if (e == 4)
-		printf("check the paths");
+		printf("Check the paths\n");
 	else if (e == 5)
-		printf("check map");
+		printf("Check map\n");
 }
 
-int parsing(char *str)
+int	parsing(char *str)
 {
 	if (!dot_cub(str))
 		return (printerr(1), 0);
