@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_lines1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelhadj <abelhadj@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: aoudija <aoudija@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 16:32:15 by aoudija           #+#    #+#             */
-/*   Updated: 2023/06/16 23:51:43 by abelhadj         ###   ########.fr       */
+/*   Updated: 2023/06/17 21:02:04 by aoudija          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,13 +49,15 @@ char	**fst_part(char **tab)
 	c = 0;
 	while (tab[++i] && c < 6)
 	{
-		if ((tab[i][0] == ' ' || tab[i][0] == '\t') && !all_white(tab[i]))
-			(fst_part[++j] = ft_strdup(tab[i]), c++);
-		else if ((tab[i][0] == ' ' || tab[i][0] == '\t') && all_white(tab[i]))
+		if (((tab[i][0] == ' ' || tab[i][0] == '\t') && !all_white(tab[i]))
+			|| (tab[i][0] != '\n' && ft_strlen(tab[i]) >= 1))
+		{
+			fst_part[++j] = ft_strdup(tab[i]);
+			c++;
+		}
+		else
 		{
 		}
-		else if (tab[i][0] != '\n' && ft_strlen(tab[i]) >= 1)
-			(fst_part[++j] = ft_strdup(tab[i]), c++);
 	}
 	fst_part[++j] = 0;
 	return (fst_part);

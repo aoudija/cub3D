@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   first_part_lines.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelhadj <abelhadj@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: aoudija <aoudija@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 12:35:22 by aoudija           #+#    #+#             */
-/*   Updated: 2023/06/16 23:58:21 by abelhadj         ###   ########.fr       */
+/*   Updated: 2023/06/17 21:53:47 by aoudija          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,8 @@ char	*get_line(char **tab, char *str)
 {
 	int		i;
 	int		j;
-	int		b;
-	char	*line;
 
-	b = -1;
 	i = -1;
-	line = NULL;
 	while (tab[++i])
 	{
 		j = -1;
@@ -29,21 +25,15 @@ char	*get_line(char **tab, char *str)
 		{
 			if (tab[i][j] == str[0])
 			{
-				if (!str[1] && b != 1)
-				{
-					line = ft_strdup(tab[i]);
-					b = 1;
-				}
+				if (!str[1])
+					return (ft_strdup(tab[i]));
 				else if (tab[i][j + 1]
-					&& tab[i][j + 1] == str[1] && b != 1)
-				{
-					line = ft_strdup(tab[i]);
-					b = 1;
-				}
+					&& tab[i][j + 1] == str[1])
+					return (ft_strdup(tab[i]));
 			}
 		}
 	}
-	return (line);
+	return (NULL);
 }
 
 char	*fst_partof_line(char *line)

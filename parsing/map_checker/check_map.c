@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelhadj <abelhadj@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: aoudija <aoudija@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 09:24:53 by aoudija           #+#    #+#             */
-/*   Updated: 2023/06/17 01:16:53 by abelhadj         ###   ########.fr       */
+/*   Updated: 2023/06/17 21:06:11 by aoudija          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,17 +68,14 @@ int	is_closed(char c)
 		{
 			if (g_data.pars.map[i][j] == c)
 			{
-				if (g_data.pars.map[i][j - 1] == ' '
+				if ((g_data.pars.map[i][j - 1] == ' '
 					|| g_data.pars.map[i][j - 1] == 0)
-					return (0);
-				if (g_data.pars.map[i][j + 1] == ' '
+					|| (g_data.pars.map[i][j + 1] == ' '
 					|| g_data.pars.map[i][j + 1] == 0)
-					return (0);
-				if (g_data.pars.map[i - 1][j] == ' '
-					|| g_data.pars.map[i - 1][j] == 0)
-					return (0);
-				if (g_data.pars.map[i + 1][j] == ' '
-					|| g_data.pars.map[i + 1][j] == 0)
+					|| (g_data.pars.map[i - 1][j] == ' '
+					|| j + 1 >= (int)ft_strlen(g_data.pars.map[i - 1]))
+					|| (g_data.pars.map[i + 1][j] == ' '
+					|| j + 1 >= (int)ft_strlen(g_data.pars.map[i + 1])))
 					return (0);
 			}
 		}

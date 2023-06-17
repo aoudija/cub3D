@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelhadj <abelhadj@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: aoudija <aoudija@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 20:47:12 by abelhadj          #+#    #+#             */
-/*   Updated: 2023/06/17 01:04:47 by abelhadj         ###   ########.fr       */
+/*   Updated: 2023/06/17 20:43:34 by aoudija          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ typedef struct s_pars
 	char	*colorc;
 	char	**f;
 	char	**c;
+	int		*fl;
+	int		*ce;
 	char	**map;
 	char	pos;
 	int		x;

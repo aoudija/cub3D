@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_content.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelhadj <abelhadj@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: aoudija <aoudija@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 11:44:09 by aoudija           #+#    #+#             */
-/*   Updated: 2023/06/16 23:53:21 by abelhadj         ###   ########.fr       */
+/*   Updated: 2023/06/17 21:02:57 by aoudija          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,4 +82,3 @@ int	check_content(void)
 		return (0);
 	return (1);
 }
-
