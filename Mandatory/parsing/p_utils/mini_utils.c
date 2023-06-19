@@ -6,7 +6,7 @@
 /*   By: aoudija <aoudija@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 11:05:28 by aoudija           #+#    #+#             */
-/*   Updated: 2023/06/17 15:54:56 by aoudija          ###   ########.fr       */
+/*   Updated: 2023/06/19 16:35:21 by aoudija          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,6 @@ int	dot_cub(char *str)
 {
 	if (ft_strcmp(str + (ft_strlen(str) - ft_strlen(".cub")), ".cub")
 		|| open(str, O_RDWR) < 0)
-	{
-		printf("Error\nfile_err\n");
 		return (0);
-	}
 	return (1);
 }
