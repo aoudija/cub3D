@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_utils_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelhadj <abelhadj@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: aoudija <aoudija@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 11:05:28 by aoudija           #+#    #+#             */
-/*   Updated: 2023/06/18 16:51:19 by abelhadj         ###   ########.fr       */
+/*   Updated: 2023/07/06 18:01:19 by aoudija          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ int	all_white(char *str)
 {
 	int	i;
 
+	if (!str)
+		return (0);
 	i = -1;
 	while (str[++i])
 	{
@@ -82,9 +84,6 @@ int	dot_cub(char *str)
 {
 	if (ft_strcmp(str + (ft_strlen(str) - ft_strlen(".cub")), ".cub")
 		|| open(str, O_RDWR) < 0)
-	{
-		printf("Error\nfile_err\n");
 		return (0);
-	}
 	return (1);
 }

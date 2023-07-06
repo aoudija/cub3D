@@ -6,7 +6,7 @@
 /*   By: aoudija <aoudija@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 11:05:28 by aoudija           #+#    #+#             */
-/*   Updated: 2023/06/19 16:35:21 by aoudija          ###   ########.fr       */
+/*   Updated: 2023/07/06 18:02:17 by aoudija          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ int	all_white(char *str)
 {
 	int	i;
 
+	if (!str)
+		return (0);
 	i = -1;
 	while (str[++i])
 	{
