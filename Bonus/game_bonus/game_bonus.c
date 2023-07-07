@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelhadj <abelhadj@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: abelhadj <abelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 17:18:49 by abelhadj          #+#    #+#             */
-/*   Updated: 2023/06/18 16:50:59 by abelhadj         ###   ########.fr       */
+/*   Updated: 2023/07/07 16:16:03 by abelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void	game(void)
 {
-	init();
+	if (init())
+		return (printerr(7));
 	mlx_hook(g_data.mlx_win, 2, 1L << 0, key_on, NULL);
 	mlx_hook(g_data.mlx_win, 3, 1L << 1, key_off, NULL);
 	mlx_hook(g_data.mlx_win, 17, 0, quit, &g_data);

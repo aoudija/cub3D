@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelhadj <abelhadj@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: abelhadj <abelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 20:47:12 by abelhadj          #+#    #+#             */
-/*   Updated: 2023/06/18 17:54:14 by abelhadj         ###   ########.fr       */
+/*   Updated: 2023/07/07 16:03:36 by abelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -234,9 +234,9 @@ int		mouse_on(int key, int x);
 int		mouse_off(int key);
 /* init */
 void	check_dir_angle(void);
-void	wall_init(void);
-void	gun_init(void);
-void	nbr_init(void);
+int		wall_init(void);
+int		gun_init(void);
+int		nbr_init(void);
 void	var_init(void);
 
 /* game */
@@ -261,8 +261,7 @@ void	img3d(void);
 /* init*/
 void	imgs_init(void);
 void	win_init(void);
-void	wall_init(void);
-void	init(void);
+int		init(void);
 void	resetimg(void);
 void	ft_texture_v(int i);
 void	ft_texture_h(int i);

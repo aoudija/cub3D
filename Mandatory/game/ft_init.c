@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_init.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelhadj <abelhadj@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: abelhadj <abelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 20:18:06 by abelhadj          #+#    #+#             */
-/*   Updated: 2023/06/18 14:04:16 by abelhadj         ###   ########.fr       */
+/*   Updated: 2023/07/07 15:38:38 by abelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	resetimg(void)
 			&g_data.img2.endian);
 }
 
-void	init(void)
+int	init(void)
 {
 	var_init();
 	check_dir_angle();
@@ -47,5 +47,7 @@ void	init(void)
 	g_data.g3d = ft_calloc(sizeof(t_ray), g_data.nbr_rays + 1);
 	win_init();
 	imgs_init();
-	wall_init();
+	if (wall_init())
+		return (1);
+	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aoudija <aoudija@student.42.fr>            +#+  +:+       +#+        */
+/*   By: abelhadj <abelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 16:32:40 by aoudija           #+#    #+#             */
-/*   Updated: 2023/06/17 16:03:15 by aoudija          ###   ########.fr       */
+/*   Updated: 2023/07/07 17:25:40 by abelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,10 @@ void	printerr(int e)
 		printf("Check the paths\n");
 	else if (e == 5)
 		printf("Check map\n");
+	else if (e == 6)
+		printf("Check arguments\n");
+	else if (e == 7)
+		printf("Check images\n");
 }
 
 int	parsing(char *str)

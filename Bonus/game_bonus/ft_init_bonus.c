@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_init_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelhadj <abelhadj@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: abelhadj <abelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 20:18:06 by abelhadj          #+#    #+#             */
-/*   Updated: 2023/06/18 17:49:03 by abelhadj         ###   ########.fr       */
+/*   Updated: 2023/07/07 16:31:23 by abelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	resetimg(void)
 			&g_data.img2.endian);
 }
 
-void	minigun_init(void)
+int	minigun_init(void)
 {
 	int	x;
 
@@ -64,9 +64,14 @@ void	minigun_init(void)
 	g_data.minigun[5].img = mlx_xpm_file_to_image(g_data.mlx, "file/mg5.xpm",
 			&x, &x);
 	g_data.minigunp = g_data.minigun[0].img;
+	if (!g_data.minigun[0].img || !g_data.minigun[1].img
+		|| !g_data.minigun[2].img || !g_data.minigun[3].img
+		|| !g_data.minigun[4].img || !g_data.minigun[5].img)
+		return (1);
+	return (0);
 }
 
-void	init(void)
+int	init(void)
 {
 	var_init();
 	check_dir_angle();
@@ -78,8 +83,7 @@ void	init(void)
 	g_data.g3d = ft_calloc(sizeof(t_ray), g_data.nbr_rays + 1);
 	win_init();
 	imgs_init();
-	wall_init();
-	gun_init();
-	nbr_init();
-	minigun_init();
+	if (minigun_init() || nbr_init() || gun_init() || wall_init())
+		return (1);
+	return (0);
 }
