@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_lines1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelhadj <abelhadj@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: aoudija <aoudija@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 16:32:15 by aoudija           #+#    #+#             */
-/*   Updated: 2023/06/18 19:07:02 by abelhadj         ###   ########.fr       */
+/*   Updated: 2023/07/07 18:42:21 by aoudija          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,24 +66,20 @@ int	paths(char **lines)
 	t = rest_of_line(get_line(lines, "NO"), "NO");
 	if (!t)
 		return (0);
-	free(t);
-	g_data.pars.path_no = get_str(rest_of_line(get_line(lines, "NO"), "NO"));
+	g_data.pars.path_no = get_str(t);
 	t = rest_of_line(get_line(lines, "SO"), "SO");
 	if (!t)
 		return (free(g_data.pars.path_no), 0);
-	free(t);
-	g_data.pars.path_so = get_str(rest_of_line(get_line(lines, "SO"), "SO"));
+	g_data.pars.path_so = get_str(t);
 	t = rest_of_line(get_line(lines, "WE"), "WE");
 	if (!t)
 		return (free(g_data.pars.path_no), free(g_data.pars.path_so), 0);
-	free(t);
-	g_data.pars.path_we = get_str(rest_of_line(get_line(lines, "WE"), "WE"));
+	g_data.pars.path_we = get_str(t);
 	t = rest_of_line(get_line(lines, "EA"), "EA");
 	if (!t)
 		return (free(g_data.pars.path_no), free(g_data.pars.path_so),
 			free(g_data.pars.path_we), 0);
-	free(t);
-	g_data.pars.path_ea = get_str(rest_of_line(get_line(lines, "EA"), "EA"));
+	g_data.pars.path_ea = get_str(t);
 	return (1);
 }
 
@@ -94,13 +90,11 @@ int	colors(char **lines)
 	t = rest_of_line(get_line(lines, "F"), "F");
 	if (!t)
 		return (0);
-	free(t);
-	g_data.pars.colorf = get_str(rest_of_line(get_line(lines, "F"), "F"));
+	g_data.pars.colorf = get_str(t);
 	t = rest_of_line(get_line(lines, "C"), "C");
 	if (!t)
 		return (free(g_data.pars.colorf), 0);
-	free(t);
-	g_data.pars.colorc = get_str(rest_of_line(get_line(lines, "C"), "C"));
+	g_data.pars.colorc = get_str(t);
 	return (1);
 }
 
