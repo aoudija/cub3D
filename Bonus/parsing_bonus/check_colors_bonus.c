@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_colors_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelhadj <abelhadj@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: aoudija <aoudija@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 14:26:33 by aoudija           #+#    #+#             */
-/*   Updated: 2023/06/18 16:51:11 by abelhadj         ###   ########.fr       */
+/*   Updated: 2023/07/08 15:40:33 by aoudija          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	check_commas(char *str)
 			c++;
 	}
 	if (c != 2)
-		return (free(str), 0);
+		return (0);
 	return (1);
 }
 
@@ -71,12 +71,8 @@ int	check_colors(void)
 	if (!check_digitcomma(g_data.pars.colorc)
 		|| !check_digitcomma(g_data.pars.colorf))
 		return (0);
-	if (!check_commas(g_data.pars.colorc) && check_commas(g_data.pars.colorf))
-		return (free(g_data.pars.colorf), 0);
-	if (!check_commas(g_data.pars.colorf) && check_commas(g_data.pars.colorc))
-		return (free(g_data.pars.colorc), 0);
-	if (!check_commas(g_data.pars.colorf) && !check_commas(g_data.pars.colorc))
-		return (0);
+	if (!check_commas(g_data.pars.colorc) || !check_commas(g_data.pars.colorf))
+		return (free(g_data.pars.colorf), free(g_data.pars.colorc), 0);
 	g_data.pars.c = ft_split(g_data.pars.colorc, ',');
 	g_data.pars.f = ft_split(g_data.pars.colorf, ',');
 	free(g_data.pars.colorc);
