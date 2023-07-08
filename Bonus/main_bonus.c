@@ -6,7 +6,7 @@
 /*   By: aoudija <aoudija@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 20:46:41 by abelhadj          #+#    #+#             */
-/*   Updated: 2023/07/08 16:01:20 by aoudija          ###   ########.fr       */
+/*   Updated: 2023/07/08 17:40:49 by aoudija          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,10 @@ int	main(int ac, char **av)
 	if (ac == 2)
 	{
 		if (parsing(av[1]))
+		{
 			game();
+			free_parser();
+		}
 	}
 	else
 		printerr(6);
